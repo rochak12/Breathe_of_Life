@@ -1,5 +1,6 @@
 package com.cs246.breathoflife;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -24,21 +25,32 @@ public class MainActivity extends AppCompatActivity {
     Meditation meditation = new Meditation();
     TextView mTextField;
 
+    private Button BtnMove;
+
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // create timer
         mTextField =(TextView) findViewById(R.id.timerTextView);
 
+        // Create a button to go to Exercise Screen
+        BtnMove = findViewById(R.id.exercize_button);
+        BtnMove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToExercise();
+            }
+        });
 
         vibrate = (Button) findViewById(R.id.vibrate);
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Proximity proximity = new Proximity(this);
         Thread thread1 = new Thread(proximity);
         thread1.start();
-
 
         vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,14 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Main Button Build
-        Button customButton = findViewById(R.id.exercize_button);
-        customButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_SHORT).show();
-            }
-        });
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
@@ -69,13 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 mTextField.setText("done!");
             }
         }.start();
-
-
-                // scott pierce
-                // nathan rowley
-                // Grayson Jones
-
-
-                // i am the best
     }
+
+    // Exercise Button
+    private void moveToExercise(){
+        Intent intent = new Intent(MainActivity.this, Exercise.class);
+        startActivity(intent);
+    }
+
+
+
+
 }
