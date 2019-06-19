@@ -40,7 +40,6 @@ public class Exercise extends AppCompatActivity {
         }
 
         public void goHome(View view) {
-
             finish();
         }
 
