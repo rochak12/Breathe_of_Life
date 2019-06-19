@@ -36,7 +36,7 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         startTimerInExercise = findViewById(R.id.button2);
         textView2 = findViewById(R.id.textView2);
-        relax = Arrays.asList(3, 3, 3); // make sure the array is always odd to make sure it ends on a breathe out
+        relax = Arrays.asList(3, 3, 3, 4, 4, 4, 3, 3, 3); // make sure the array is always odd to make sure it ends on a breathe out
         }
 
         public void goHome(View view) {
@@ -64,7 +64,7 @@ public class Exercise extends AppCompatActivity {
         public  void startTimerInExercise(final View view) {
 
 //            vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-            int totalElapsed = 0;
+            int totalElapsed = 0; // adds
             final int status = 0;
             for (int i = 0; i < relax.size(); i++) {
                 int b = relax.get(i) * 1000;
@@ -80,37 +80,11 @@ public class Exercise extends AppCompatActivity {
                     public void run() {
 //                        vi.vibrate(50);
                         startVibrate(view, finalI);
-//
-//                            Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
-//
-//                            Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
-
 
                     }
-                }, b+totalElapsed ); // also try b + totalElapsed, current is b*i
-//                int c = 1;
-//                vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-//
-//                new CountDownTimer(b, 1000) {
-//                    int c = 1;
-//
-//                    public void onTick(long millisUntilFinished) {
-//                        if (c == 1)
-//                        {
-//                            vi.vibrate(50);
-//                            c--;
-//                        }
-//                        textView2.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
-//
-//                    }
-//
-//                    public void onFinish() {
-//                        textView2.setText("breathe");
-//                    }
-//                }.start();
+                }, b+totalElapsed ); //
                 System.out.println(i);
             }
-//            finish();
         }
 
     }
