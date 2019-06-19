@@ -36,7 +36,7 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         startTimerInExercise = findViewById(R.id.button2);
         textView2 = findViewById(R.id.textView2);
-        relax = Arrays.asList(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+        relax = Arrays.asList(3, 3, 3); // make sure the array is always odd to make sure it ends on a breathe out
         }
 
         public void goHome(View view) {
@@ -44,20 +44,50 @@ public class Exercise extends AppCompatActivity {
             finish();
         }
 
-
-        public  void startTimerInExercise(View view) {
-
+        public void startVibrate(View view, final int j){
             vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-            for (int i = 0; i < relax.size(); i++) {
-                int b = relax.get(i) * 1000;
-                Handler h = new Handler();
-                h.postDelayed(new Runnable() {
+            Handler v = new Handler();
+            for (int i = 0; i < 2; i++) {
+                v.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         vi.vibrate(50);
-                        Toast.makeText(Exercise.this, "Vibrate", Toast.LENGTH_SHORT).show();
+                        if (j % 2 == 0)
+                            Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
                     }
-                }, b*i);
+                }, 150 * i); // also try b + totalElapsed, current is b*i
+            }
+        }
+
+        public  void startTimerInExercise(final View view) {
+
+//            vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            int totalElapsed = 0;
+            final int status = 0;
+            for (int i = 0; i < relax.size(); i++) {
+                int b = relax.get(i) * 1000;
+                if (i != 0)
+                    totalElapsed += b;
+                else
+//                    vi.vibrate(50); // initial starting vibration
+                    startVibrate(view, 1);
+                Handler h = new Handler();
+                final int finalI = i;
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+//                        vi.vibrate(50);
+                        startVibrate(view, finalI);
+//
+//                            Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
+//
+//                            Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }, b+totalElapsed ); // also try b + totalElapsed, current is b*i
 //                int c = 1;
 //                vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 //
@@ -80,6 +110,7 @@ public class Exercise extends AppCompatActivity {
 //                }.start();
                 System.out.println(i);
             }
+//            finish();
         }
 
     }
