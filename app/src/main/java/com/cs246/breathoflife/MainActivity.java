@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         vibrate = (Button) findViewById(R.id.vibrate);
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        Proximity proximity = new Proximity(this);
+      //  Proximity proximity = new Proximity(this);
         Thread thread1 = new Thread(proximity);
         thread1.start();
 
