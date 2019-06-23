@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // create timer
-        mTextField =(TextView) findViewById(R.id.timerTextView);
-
         // Create a button to go to Exercise Screen
         BtnMove = findViewById(R.id.exercize_button);
         BtnMove.setOnClickListener(new View.OnClickListener() {
@@ -46,12 +43,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        vibrate = (Button) findViewById(R.id.vibrate);
-        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-      //  Proximity proximity = new Proximity(this);
-        Thread thread1 = new Thread(proximity);
-        thread1.start();
 
+
+        // This is part of strength challenge
+//      //  Proximity proximity = new Proximity(this);
+//        Thread thread1 = new Thread(proximity);
+//        thread1.start();
+
+
+        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        // Button for vibrate
+        vibrate = (Button) findViewById(R.id.vibrate);
         vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        // create timer
+        mTextField =(TextView) findViewById(R.id.timerTextView);
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
@@ -73,7 +79,15 @@ public class MainActivity extends AppCompatActivity {
                 mTextField.setText("done!");
             }
         }.start();
+
+
     }
+
+
+
+
+
+
 
     // Exercise Button
     private void moveToExercise(){

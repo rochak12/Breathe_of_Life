@@ -34,8 +34,10 @@ public class Exercise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
         startTimerInExercise = findViewById(R.id.button2);
         textView2 = findViewById(R.id.textView2);
+
         relax = Arrays.asList(3, 3, 3, 4, 4, 4, 3, 3, 3); // make sure the array is always odd to make sure it ends on a breathe out
         }
 
