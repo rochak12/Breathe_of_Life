@@ -83,7 +83,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="468dp"
         android:background="@drawable/exercize_button"
-        android:onClick="launch_info"
+        android:onClick="launch_Info"
         android:text="info___"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

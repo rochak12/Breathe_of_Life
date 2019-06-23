@@ -85,13 +85,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
     // Exercise Button
-    private void moveToExercise(){
+    public void moveToExercise(){
+        System.out.println("Ready to go to Workout/Exercise Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
         startActivity(intent);
+    }
+
+    //Relax/Meditation
+    public void launch_Relax(View view){
+        System.out.println("Ready to go to Relax/Meditation Mode");
+    }
+
+    //Goes to Custom Activity
+    public void launch_Custom(View view){
+        System.out.println("Ready to go to Custom Mode");
+    }
+
+    //Goes to Setting Activity
+    public void launch_Setting(View view){
+        System.out.println("Ready to go to Setting");
+    }
+
+    //Goes to Info Activity
+    public void launch_Info(View view){
+        System.out.println("Ready to go to Info");
     }
 }

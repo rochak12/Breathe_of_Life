@@ -62,8 +62,9 @@ public class Exercise extends AppCompatActivity {
             }
         }
 
-        public  void startTimerInExercise(final View view) {
 
+
+        public  void startTimerInExercise(final View view) {
 //            vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
             int totalElapsed = 0; // adds
             final int status = 0;
