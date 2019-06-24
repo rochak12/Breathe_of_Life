@@ -12,12 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    static public String message_Intent = "intent_Message";
+    static public String relax_Intent = "i_Want_To_Be_In_Relax_Mode";
+    static public String workout_Intent = "i_Want_To_Be_In_Workout";
+    static public String custom_Intent = "i_Want_To_Be_In_Custom";
+
 
     Button vibrate;
     Vibrator v;
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Integer> meditationData = meditation.getArrayList();
+                List<Integer> meditationData = meditation.getList();
                 for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
                     if (i == meditationData.get(1))
                         v.vibrate(50);
@@ -89,12 +92,16 @@ public class MainActivity extends AppCompatActivity {
     public void moveToExercise(){
         System.out.println("Ready to go to Workout/Exercise Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
+        intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
     }
 
     //Relax/Meditation
     public void launch_Relax(View view){
         System.out.println("Ready to go to Relax/Meditation Mode");
+        Intent intent = new Intent(MainActivity.this, Exercise.class);
+        intent.putExtra(message_Intent, relax_Intent);
+        startActivity(intent);
     }
 
     //Goes to Custom Activity
