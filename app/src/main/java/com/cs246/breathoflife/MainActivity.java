@@ -12,12 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    static public String message_Intent = "intent_Message";
+    static public String relax_Intent = "i_Want_To_Be_In_Relax_Mode";
+    static public String workout_Intent = "i_Want_To_Be_In_Workout";
+    static public String custom_Intent = "i_Want_To_Be_In_Custom";
+
 
     Button vibrate;
     Vibrator v;
@@ -34,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // create timer
-        mTextField =(TextView) findViewById(R.id.timerTextView);
-
         // Create a button to go to Exercise Screen
         BtnMove = findViewById(R.id.exercize_button);
         BtnMove.setOnClickListener(new View.OnClickListener() {
@@ -46,16 +46,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        vibrate = (Button) findViewById(R.id.vibrate);
-        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        Proximity proximity = new Proximity(this);
-        Thread thread1 = new Thread(proximity);
-        thread1.start();
 
+
+        // This is part of strength challenge
+//      //  Proximity proximity = new Proximity(this);
+//        Thread thread1 = new Thread(proximity);
+//        thread1.start();
+
+
+        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        // Button for vibrate
+        vibrate = (Button) findViewById(R.id.vibrate);
         vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Integer> meditationData = meditation.getArrayList();
+                List<Integer> meditationData = meditation.getList();
                 for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
                     if (i == meditationData.get(1))
                         v.vibrate(50);
@@ -64,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        // create timer
+        mTextField =(TextView) findViewById(R.id.timerTextView);
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
@@ -73,11 +82,40 @@ public class MainActivity extends AppCompatActivity {
                 mTextField.setText("done!");
             }
         }.start();
+
+
     }
 
+
+
     // Exercise Button
-    private void moveToExercise(){
+    public void moveToExercise(){
+        System.out.println("Ready to go to Workout/Exercise Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
+        intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
+    }
+
+    //Relax/Meditation
+    public void launch_Relax(View view){
+        System.out.println("Ready to go to Relax/Meditation Mode");
+        Intent intent = new Intent(MainActivity.this, Exercise.class);
+        intent.putExtra(message_Intent, relax_Intent);
+        startActivity(intent);
+    }
+
+    //Goes to Custom Activity
+    public void launch_Custom(View view){
+        System.out.println("Ready to go to Custom Mode");
+    }
+
+    //Goes to Setting Activity
+    public void launch_Setting(View view){
+        System.out.println("Ready to go to Setting");
+    }
+
+    //Goes to Info Activity
+    public void launch_Info(View view){
+        System.out.println("Ready to go to Info");
     }
 }
