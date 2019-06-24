@@ -49,11 +49,11 @@ public class Exercise extends AppCompatActivity {
         System.out.println(receive_Intent_Message);
         System.out.println(MainActivity.relax_Intent + "\n" + MainActivity.workout_Intent + "Condition checked");
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
-            System.out.println("This condition matched");
+            System.out.println("This condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out
         }
         if (receive_Intent_Message.equals(MainActivity.workout_Intent)){
-            System.out.println("This condition matched");
+            System.out.println("This condition matched2");
             return workout.getList();
         }
         return Arrays.asList(1,2,3);
