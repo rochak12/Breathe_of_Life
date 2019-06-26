@@ -10,7 +10,7 @@ public class Workout {
       Meditation*/
 
     Workout(){
-        list = Arrays.asList(3, 3, 3, 4, 4, 4, 3, 3, 3);
+        list = Arrays.asList(3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3);
         System.out.println("Workout created this list" + list);
     }
 
