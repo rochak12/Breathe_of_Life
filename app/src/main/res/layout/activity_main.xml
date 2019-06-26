@@ -102,14 +102,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginTop="156dp"
         android:background="@drawable/exercize_button"
         android:onClick="launch_Relax"
         android:text="Relax/Meditation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
