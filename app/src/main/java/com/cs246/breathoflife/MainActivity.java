@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Create a button to go to Exercise Screen
-        BtnMove = findViewById(R.id.exercize_button);
+        BtnMove = findViewById(R.id.meditate_button);
         BtnMove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
