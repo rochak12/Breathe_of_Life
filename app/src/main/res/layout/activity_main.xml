@@ -94,20 +94,17 @@
     // Vibrate Button
 
     <Button
-        android:id="@+id/relax_button"
-        android:layout_width="161dp"
-        android:layout_height="145dp"
+        android:id="@+id/exercize_button2"
+        android:layout_width="163dp"
+        android:layout_height="134dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="156dp"
-        android:background="@drawable/exercize_button"
-        android:onClick="launch_Relax"
-        android:text="Relax/Meditation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="132dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
