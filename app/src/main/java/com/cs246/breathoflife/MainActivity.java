@@ -37,14 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create a button to go to Exercise Screen
-        BtnMove = findViewById(R.id.meditate_button);
-        BtnMove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveToExercise();
-            }
-        });
+
+
 
 
 
@@ -89,15 +83,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Exercise Button
-    public void moveToExercise(){
-        System.out.println("Ready to go to Workout/Exercise Mode");
+    public void launch_Meditate(){
+        System.out.println("Ready to go to meditate/Relax Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
         intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
     }
 
     //Relax/Meditation
-    public void launch_Relax(View view){
+    public void launch_Workout(View view){
         System.out.println("Ready to go to Relax/Meditation Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
         intent.putExtra(message_Intent, relax_Intent);
@@ -115,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Goes to Info Activity
-    public void launch_Info(View view){
+    public void launch_Preset(View view){
         System.out.println("Ready to go to Info");
     }
 }
