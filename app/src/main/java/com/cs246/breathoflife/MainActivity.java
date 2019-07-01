@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
         setContentView(R.layout.activity_main);
 
         // Create a button to go to Exercise Screen
