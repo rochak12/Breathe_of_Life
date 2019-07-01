@@ -102,11 +102,17 @@ public class MainActivity extends AppCompatActivity {
     //Goes to Custom Activity
     public void launch_Custom(View view){
         System.out.println("Ready to go to Custom Mode");
+        Intent intent = new Intent(MainActivity.this, Custom.class);
+        intent.putExtra(message_Intent, workout_Intent);
+        startActivity(intent);
     }
 
     //Goes to Setting Activity
     public void launch_Setting(View view){
         System.out.println("Ready to go to Setting");
+        Intent intent = new Intent(MainActivity.this, settings.class);
+        intent.putExtra(message_Intent, workout_Intent);
+        startActivity(intent);
     }
 
     //Goes to Info Activity

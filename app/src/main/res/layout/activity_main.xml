@@ -14,7 +14,6 @@
 
 
     // Meditate Button
-
     <Button
         android:id="@+id/meditate_button"
         android:layout_width="210dp"
@@ -31,8 +30,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    //Custom Btn
 
+    //Custom Btn
     <Button
         android:id="@+id/custom_button"
         android:layout_width="250dp"
@@ -51,7 +50,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     // Settings Btn
-
     <Button
         android:id="@+id/setting_button"
         android:layout_width="135dp"
@@ -70,7 +68,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     // Workout Btn
-
     <Button
         android:id="@+id/workout_button"
         android:layout_width="186dp"
@@ -84,14 +81,13 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="208dp"
         android:background="@drawable/workout_button"
-        android:onClick="launch_Info"
+        android:onClick="launch_Workout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     // Presets
-
     <Button
         android:id="@+id/presets_button"
         android:layout_width="206dp"
@@ -108,7 +104,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     // Vibrate Button
-
     <Button
         android:id="@+id/vibrate"
         android:layout_width="wrap_content"
@@ -129,7 +124,6 @@
         app:layout_constraintVertical_bias="0.975" />
 
     // CountDown
-
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="74dp"
@@ -146,6 +140,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.975" />
 
+    //  background
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
