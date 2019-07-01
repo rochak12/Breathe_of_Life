@@ -47,7 +47,7 @@ public class Exercise extends AppCompatActivity {
 
     List<Integer> get_Pattern() {
         System.out.println(receive_Intent_Message);
-        System.out.println(MainActivity.relax_Intent + "\n" + MainActivity.workout_Intent + "Condition checked");
+        System.out.println(MainActivity.relax_Intent  + MainActivity.workout_Intent + "Condition checked");
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
             System.out.println("This condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out

@@ -83,15 +83,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Exercise Button
-    public void launch_Meditate(View view){
-        System.out.println("Ready to go to meditate/Relax Mode");
+    public void launch_Workout(View view){
+        System.out.println("Ready to go to Workout Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
         intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
     }
 
     //Relax/Meditation
-    public void launch_Workout(View view){
+    public void launch_Meditate(View view){
         System.out.println("Ready to go to Relax/Meditation Mode");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
         intent.putExtra(message_Intent, relax_Intent);
