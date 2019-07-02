@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     static public String relax_Intent = "i_Want_To_Be_In_Relax_Mode";
     static public String workout_Intent = "i_Want_To_Be_In_Workout";
     static public String custom_Intent = "i_Want_To_Be_In_Custom";
+    static public String preset_Intent = "i_Want_To_Be_In_Preset";
+    static public String string_Intent = "i_Want_To_Be_In_Setting";
 
 
     Button vibrate;
@@ -110,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Goes to Info Activity
     public void launch_Preset(View view){
-        System.out.println("Ready to go to Info");
+        System.out.println("Ready to go to Preset");
+        Intent intent = new Intent(MainActivity.this, Exercise.class);
+        intent.putExtra(message_Intent, preset_Intent);
+        startActivity(intent);
     }
 }

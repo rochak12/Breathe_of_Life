@@ -27,6 +27,8 @@ public class Exercise extends AppCompatActivity {
     String receive_Intent_Message;
     Meditation meditation = new Meditation();
     Workout workout = new Workout();
+    Preset preset = new Preset();
+
 
 
     @Override
@@ -49,12 +51,16 @@ public class Exercise extends AppCompatActivity {
         System.out.println(receive_Intent_Message);
         System.out.println(MainActivity.relax_Intent  + MainActivity.workout_Intent + "Condition checked");
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
-            System.out.println("This condition matched1");
+            System.out.println("Relax condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out
         }
         if (receive_Intent_Message.equals(MainActivity.workout_Intent)){
-            System.out.println("This condition matched2");
+            System.out.println("Workout condition matched2");
             return workout.getList();
+        }
+        if (receive_Intent_Message.equals(MainActivity.preset_Intent)){
+            System.out.println("Preset condition matched3");
+            return preset.getList();
         }
         return Arrays.asList(1,2,3);
        // return null;
