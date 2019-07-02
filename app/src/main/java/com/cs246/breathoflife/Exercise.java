@@ -30,7 +30,6 @@ public class Exercise extends AppCompatActivity {
     Preset preset = new Preset();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,47 +48,25 @@ public class Exercise extends AppCompatActivity {
 
     List<Integer> get_Pattern() {
         System.out.println(receive_Intent_Message);
-        System.out.println(MainActivity.relax_Intent  + MainActivity.workout_Intent + "Condition checked");
+        System.out.println(MainActivity.relax_Intent + MainActivity.workout_Intent + "Condition checked");
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
             System.out.println("Relax condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out
         }
-        if (receive_Intent_Message.equals(MainActivity.workout_Intent)){
+        if (receive_Intent_Message.equals(MainActivity.workout_Intent)) {
             System.out.println("Workout condition matched2");
             return workout.getList();
         }
-        if (receive_Intent_Message.equals(MainActivity.preset_Intent)){
+        if (receive_Intent_Message.equals(MainActivity.preset_Intent)) {
             System.out.println("Preset condition matched3");
             return preset.getList();
         }
-        return Arrays.asList(1,2,3);
-       // return null;
+        return Arrays.asList(1, 2, 3);
+        // return null;
     }
 
-    public void goHome(View view) {
-        finish();
-    }
-
-    public void startVibrate(View view, final int j) {
+    public void start_Exercise(final View view) {
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        Handler v = new Handler();
-        for (int i = 0; i < 2; i++) {
-            v.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    vi.vibrate(50);
-                    if (j % 2 == 0)
-                        Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
-                }
-            }, 150 * i); // also try b + totalElapsed, current is b*i
-        }
-    }
-
-
-    public void startTimerInExercise(final View view) {
-//            vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
@@ -113,6 +90,28 @@ public class Exercise extends AppCompatActivity {
         }
     }
 
-}
 
+    public void startVibrate(View view, final int j) {
+        vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        Handler v = new Handler();
+        for (int i = 0; i < 2; i++) {
+            v.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    vi.vibrate(50);
+                    if (j % 2 == 0)
+                        Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
+                }
+            }, 150 * i); // also try b + totalElapsed, current is b*i
+        }
+    }
+
+
+    // This needs to be gone
+    public void startTimerInExercise(final View view) {
+        finish();
+    }
+}
 

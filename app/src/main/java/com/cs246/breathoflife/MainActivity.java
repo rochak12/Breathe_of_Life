@@ -1,5 +1,6 @@
 package com.cs246.breathoflife;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.annotation.TargetApi;
@@ -15,7 +16,6 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     static public String message_Intent = "intent_Message";
     static public String relax_Intent = "i_Want_To_Be_In_Relax_Mode";
     static public String workout_Intent = "i_Want_To_Be_In_Workout";
@@ -26,11 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     Button vibrate;
     Vibrator v;
-    Proximity proximity;
-    Meditation meditation = new Meditation();
     TextView mTextField;
 
     private Button BtnMove;
@@ -44,31 +41,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
-
-
-        // This is part of strength challenge
-//      //  Proximity proximity = new Proximity(this);
+//        // This is part of strength challenge
+//        Proximity proximity = new Proximity(this, this);
 //        Thread thread1 = new Thread(proximity);
 //        thread1.start();
 
 
-        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        // Button for vibrate
-        vibrate = (Button) findViewById(R.id.vibrate);
-        vibrate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<Integer> meditationData = meditation.getList();
-                for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
-                    if (i == meditationData.get(1))
-                        v.vibrate(50);
-                v.vibrate(50);
-                Toast.makeText(MainActivity.this, "Vibrate", Toast.LENGTH_SHORT).show();
-            }
-        });
 
+
+
+
+
+
+//        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+//        // Button for vibrate
+//        vibrate = (Button) findViewById(R.id.vibrate);
+//        vibrate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                List<Integer> meditationData = meditation.getList();
+//                for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
+//                    if (i == meditationData.get(1))
+//                        v.vibrate(50);
+//                v.vibrate(50);
+//                Toast.makeText(MainActivity.this, "Vibrate", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
         // create timer
@@ -83,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-
     }
+
+
+
+
 
 
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Goes to Info Activity
+    //Goes to Preset Activity
     public void launch_Preset(View view){
         System.out.println("Ready to go to Preset");
         Intent intent = new Intent(MainActivity.this, Exercise.class);
