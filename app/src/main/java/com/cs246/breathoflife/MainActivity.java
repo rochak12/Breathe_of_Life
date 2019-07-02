@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     static public String string_Intent = "i_Want_To_Be_In_Setting";
 
 
+
+
+
     Button vibrate;
     Vibrator v;
     Proximity proximity;
