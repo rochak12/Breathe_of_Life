@@ -2,6 +2,11 @@ package com.cs246.breathoflife;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -9,6 +14,7 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
     static public String preset_Intent = "i_Want_To_Be_In_Preset";
     static public String string_Intent = "i_Want_To_Be_In_Setting";
 
-
+    SensorManager mySensorManager;
+    Sensor myProximitySensor;
 
 
     Button vibrate;
+    Meditation meditation;
     Vibrator v;
     TextView mTextField;
 
@@ -41,47 +49,76 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        // This is part of strength challenge
-//        Proximity proximity = new Proximity(this, this);
-//        Thread thread1 = new Thread(proximity);
-//        thread1.start();
 
 
+        mySensorManager = (SensorManager) getSystemService(
+                Context.SENSOR_SERVICE);
+        myProximitySensor = mySensorManager.getDefaultSensor(
+                Sensor.TYPE_PROXIMITY);
 
-
-
-
-
-
-//        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-//        // Button for vibrate
-//        vibrate = (Button) findViewById(R.id.vibrate);
-//        vibrate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                List<Integer> meditationData = meditation.getList();
-//                for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
-//                    if (i == meditationData.get(1))
-//                        v.vibrate(50);
-//                v.vibrate(50);
-//                Toast.makeText(MainActivity.this, "Vibrate", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-        // create timer
-        mTextField =(TextView) findViewById(R.id.timerTextView);
-        new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
+        final SensorEventListener proximitySensorEventListener
+                = new SensorEventListener() {
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                // TODO Auto-generated method stub
             }
 
-            public void onFinish() {
-                mTextField.setText("done!");
-            }
-        }.start();
+            @Override
+            public void onSensorChanged(SensorEvent event) {
 
+                if(event.values[0]<myProximitySensor.getMaximumRange()){
+                    getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+                }
+                else{
+                    ;
+                }
+            }
+        };
+        mySensorManager.registerListener(proximitySensorEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+
+
+
+
+
+
+
+                v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        // Button for vibrate
+        vibrate = (Button) findViewById(R.id.vibrate);
+        vibrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Integer> meditationData = meditation.getList();
+                for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
+                    if (i == meditationData.get(1))
+                        v.vibrate(50);
+                v.vibrate(50);
+                Toast.makeText(MainActivity.this, "Vibrate", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // This is timer
+        mTextField =(TextView)
+
+                findViewById(R.id.timerTextView);
+        new
+
+                CountDownTimer(30000,1000) {
+                    public void onTick ( long millisUntilFinished){
+                        mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
+                    }
+
+                    public void onFinish () {
+                        mTextField.setText("done!");
+                    }
+                }.
+
+                start();
     }
+
+
+
 
 
 
