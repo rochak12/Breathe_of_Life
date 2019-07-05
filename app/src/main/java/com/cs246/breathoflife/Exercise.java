@@ -70,7 +70,7 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
-            int b = breathing_Pattern.get(i) * 1000;
+            int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
                 totalElapsed += b;
             else

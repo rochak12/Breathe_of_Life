@@ -12,7 +12,7 @@ public class Meditation {
       Meditation*/
 
     Meditation(){
-        list = Arrays.asList(3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3);
+        list = Arrays.asList(3000, 3000, 3000);
         System.out.println("Relax/Meditation created this list" + list);
 
     }
