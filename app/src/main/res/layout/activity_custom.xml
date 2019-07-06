@@ -1,78 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Custom">
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="134dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Custom"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="271dp"
-        android:text="Romantic Metal"
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="715dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/switch4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002"
+        app:srcCompat="@drawable/customizer" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginRight="109dp"
-        android:layout_marginBottom="108dp"
-        android:text="Death Metal"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
-    <Switch
-        android:id="@+id/switch1"
+    // min time
+    <RadioGroup
+        android:id="@+id/minutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="249dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginRight="81dp"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003">
 
-    <Switch
-        android:id="@+id/switch4"
+        <RadioButton
+            android:id="@+id/one_min"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Slow"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/three_min"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/five_min"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Fast"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+    </RadioGroup>
+
+    // start speed group
+
+    <RadioGroup
+        android:id="@+id/start_speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9" />
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/s_slow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Slow"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/s_med"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/s_fast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Fast"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+    </RadioGroup>
+
+    // middle speed
+
+    <RadioGroup
+        android:id="@+id/mid_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/m_slow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Slow"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/m_med"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/m_fast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Fast"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+    </RadioGroup>
+
+
+    // End speed
+
+    <RadioGroup
+        android:id="@+id/end_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/e_slow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Slow"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/e_med"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <RadioButton
+            android:id="@+id/e_fast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Fast"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+    </RadioGroup>
+
 </android.support.constraint.ConstraintLayout>
