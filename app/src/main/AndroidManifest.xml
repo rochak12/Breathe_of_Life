@@ -18,7 +18,6 @@
         <activity android:name=".settings"></activity>
         <activity android:name=".Custom" />
         <activity android:name=".Exercise" />
-        <activity android:name=".setting"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

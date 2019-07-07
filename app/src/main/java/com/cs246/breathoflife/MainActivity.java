@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
         mySensorManager = (SensorManager) getSystemService(
                 Context.SENSOR_SERVICE);
         myProximitySensor = mySensorManager.getDefaultSensor(
@@ -63,14 +61,16 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
 
+
             @Override
             public void onSensorChanged(SensorEvent event) {
 
-                if(event.values[0]<myProximitySensor.getMaximumRange()){
-                    getWindow().getDecorView().setBackgroundColor(Color.BLACK);
-                }
-                else{
-                    ;
+                if (event.values[0] < myProximitySensor.getMaximumRange()) {
+                    // getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+                    System.out.println("Is this working");
+                } else {
+                    // getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+                     ;
                 }
             }
         };
@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-                v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         // Button for vibrate
         vibrate = (Button) findViewById(R.id.vibrate);
         vibrate.setOnClickListener(new View.OnClickListener() {
@@ -98,25 +97,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         // This is timer
-        mTextField =(TextView)
+        mTextField = (TextView)
 
                 findViewById(R.id.timerTextView);
         new
 
-                CountDownTimer(30000,1000) {
-                    public void onTick ( long millisUntilFinished){
+                CountDownTimer(30000, 1000) {
+                    public void onTick(long millisUntilFinished) {
                         mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
                     }
 
-                    public void onFinish () {
+                    public void onFinish() {
                         mTextField.setText("done!");
                     }
                 }.
 
                 start();
     }
-
 
 
 
