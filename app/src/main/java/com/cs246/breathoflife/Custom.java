@@ -1,10 +1,15 @@
 package com.cs246.breathoflife;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.cs246.breathoflife.MainActivity.message_Intent;
+import static com.cs246.breathoflife.MainActivity.relax_Intent;
 
 public class Custom extends AppCompatActivity {
     List<Integer> list;
@@ -29,5 +34,12 @@ public class Custom extends AppCompatActivity {
     }
     protected void createExercise(int duration, int start, int middle, int end){
 
+    }
+
+    //Relax/Meditation
+    public void launch_Meditate(View view) {
+        Intent intent = new Intent(Custom.this, Exercise.class);
+        intent.putExtra(message_Intent, relax_Intent);
+        startActivity(intent);
     }
 }

@@ -70,60 +70,13 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("Is this working");
                 } else {
                     // getWindow().getDecorView().setBackgroundColor(Color.BLACK);
-                     ;
+                    ;
                 }
             }
         };
         mySensorManager.registerListener(proximitySensorEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-
-
-
-
-
-
-        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        // Button for vibrate
-        vibrate = (Button) findViewById(R.id.vibrate);
-        vibrate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<Integer> meditationData = meditation.getList();
-                for (int i = meditationData.get(0); i <= meditationData.get(2); i++)
-                    if (i == meditationData.get(1))
-                        v.vibrate(50);
-                v.vibrate(50);
-                Toast.makeText(MainActivity.this, "Vibrate", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        // This is timer
-        mTextField = (TextView)
-
-                findViewById(R.id.timerTextView);
-        new
-
-                CountDownTimer(30000, 1000) {
-                    public void onTick(long millisUntilFinished) {
-                        mTextField.setText(new String("seconds remaining: " + millisUntilFinished / 1000));
-                    }
-
-                    public void onFinish() {
-                        mTextField.setText("done!");
-                    }
-                }.
-
-                start();
     }
-
-
-
-
-
-
-
-
 
     // Exercise Button
     public void launch_Workout(View view){
