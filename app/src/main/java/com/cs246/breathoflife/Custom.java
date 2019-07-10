@@ -10,6 +10,9 @@ import com.cs246.breathoflife.R;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.cs246.breathoflife.MainActivity.message_Intent;
+import static com.cs246.breathoflife.MainActivity.relax_Intent;
+
 public class Custom extends AppCompatActivity {
     static String custom_Intent = "I_WANT_TO_GO_TO_CUSTOM";
 
@@ -95,13 +98,18 @@ public class Custom extends AppCompatActivity {
     }
 
     protected void createExercise(int duration, int start, int middle, int end){
-
         defaultAppender(duration, start);
         transitionAppender(start, middle);
         defaultAppender(duration, middle);
         transitionAppender(middle, end);
         defaultAppender(duration, end);
+    }
 
+    //Relax/Meditation
+    public void launch_Meditate(View view) {
+        Intent intent = new Intent(Custom.this, Exercise.class);
+        intent.putExtra(message_Intent, relax_Intent);
+        startActivity(intent);
     }
 
 
