@@ -5,13 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.RadioButton;
 
-=======
-import android.widget.Switch;
-import com.cs246.breathoflife.R;
->>>>>>> 33e094c59aba56367ac28f61582cdafcf09064e9
 import java.util.Arrays;
 import java.util.List;
 
