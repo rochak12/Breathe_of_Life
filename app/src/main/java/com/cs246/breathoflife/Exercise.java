@@ -35,9 +35,6 @@ public class Exercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-        startTimerInExercise = findViewById(R.id.button2);
-        textView2 = findViewById(R.id.textView2);
-
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         System.out.println("This is my Intent:" + receive_Intent_Message);
 
