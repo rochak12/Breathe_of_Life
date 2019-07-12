@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,27 +45,32 @@
         app:layout_constraintVertical_bias="0.22500003">
 
         <RadioButton
-            android:id="@+id/one_min"
+            android:id="@+id/three_min"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:checked="false"
             android:text="3 Min           "
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
+
         <RadioButton
-            android:id="@+id/three_min"
+            android:id="@+id/six_min"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="6 Min              "
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
-            android:id="@+id/five_min"
+            android:id="@+id/nine_min"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="9 Min"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -80,11 +84,11 @@
         android:layout_below="@+id/button2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="318dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="183dp"
+        app:layout_constraintBottom_toTopOf="@+id/launch_custom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +100,7 @@
             android:layout_height="match_parent"
             android:text="Slow"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -104,6 +109,7 @@
             android:layout_height="match_parent"
             android:text="Medium"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -112,6 +118,7 @@
             android:layout_height="match_parent"
             android:text="Fast"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -141,6 +148,7 @@
             android:layout_height="match_parent"
             android:text="Slow"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -149,6 +157,7 @@
             android:layout_height="match_parent"
             android:text="Medium"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -157,6 +166,7 @@
             android:layout_height="match_parent"
             android:text="Fast"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -187,6 +197,7 @@
             android:layout_height="match_parent"
             android:text="Slow"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -195,6 +206,7 @@
             android:layout_height="match_parent"
             android:text="Medium"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
@@ -203,9 +215,29 @@
             android:layout_height="match_parent"
             android:text="Fast"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
+
+
+    <Button
+        android:id="@+id/launch_custom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="54dp"
+        android:onClick="launch_custom"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_speed" />
+
+
 
     <Button
         android:id="@+id/presstostart_button"
