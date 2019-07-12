@@ -40,7 +40,6 @@ public class Exercise extends AppCompatActivity {
 
         breathing_Pattern = get_Pattern();
         System.out.println("this is my pattern" + breathing_Pattern);
-
     }
 
     List<Integer> get_Pattern() {
