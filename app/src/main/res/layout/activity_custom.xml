@@ -206,7 +206,7 @@
 
     </RadioGroup>
 
-<<<<<<< HEAD
+
     <Button
         android:id="@+id/launch_custom"
         android:layout_width="0dp"
@@ -224,8 +224,7 @@
         app:layout_constraintTop_toBottomOf="@+id/start_speed" />
 
 
-||||||| merged common ancestors
-=======
+
     <Button
         android:id="@+id/presstostart_button"
         android:layout_width="349dp"
@@ -244,5 +243,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.93" />
 
->>>>>>> f28a38c291c36df261df923ca07b4bdd9aa7925b
 </android.support.constraint.ConstraintLayout>
