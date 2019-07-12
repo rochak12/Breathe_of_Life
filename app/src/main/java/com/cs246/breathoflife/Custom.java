@@ -1,11 +1,17 @@
+
 package com.cs246.breathoflife;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.RadioButton;
 
+=======
+import android.widget.Switch;
+import com.cs246.breathoflife.R;
+>>>>>>> 33e094c59aba56367ac28f61582cdafcf09064e9
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +19,8 @@ import static com.cs246.breathoflife.MainActivity.message_Intent;
 import static com.cs246.breathoflife.MainActivity.relax_Intent;
 
 public class Custom extends AppCompatActivity {
+    static String custom_Intent = "I_WANT_TO_GO_TO_CUSTOM";
+
     List<Integer> list;
     List<Integer> mts = Arrays.asList(4000, 4000, 4375, 4375, 4750, 4750, 5125, 5125, 5500, 5500, 5875, 5875);
     List<Integer> fts = Arrays.asList(1000, 1000, 1500, 1500, 2100, 2100, 2700, 2700, 3300, 3300, 3900, 3900, 4500, 4500, 5100, 5100, 5700, 5700);
@@ -166,4 +174,14 @@ public class Custom extends AppCompatActivity {
                     break;
         }
     }
+
+
+    //Launching custom
+    public void launch_custom(View view){
+        System.out.println("Ready to go to Workout Mode");
+        Intent intent = new Intent(Custom.this, Exercise.class);
+        intent.putExtra(MainActivity.message_Intent, custom_Intent);
+        startActivity(intent);
+    }
 }
+
