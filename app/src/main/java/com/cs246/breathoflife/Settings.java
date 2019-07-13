@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 
-public class settings extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
     public static String APP_PREFS = "APPLICATION_PREFERENCES";
     public static String MUSIC = "MUSIC";
     public static String VIBRATION = "VIBRATION";
@@ -28,6 +28,9 @@ public class settings extends AppCompatActivity {
         music_Switch =  findViewById(R.id.switch2);
         check_Setting();
     }
+
+
+
 
     private void check_Setting() {
         SharedPreferences sharedPref = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);

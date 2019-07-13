@@ -1,15 +1,13 @@
 package com.cs246.breathoflife;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,7 +38,8 @@ public class Exercise extends AppCompatActivity {
         breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.calm);
-        //after initializing the object for toast and vibrator we check for the setting;
+        //after initializing the object for toast and vibrator we check for the setting but
+        // before that we have to load setting activity if it hasn't been opened yet
         checkSetting();
 
 
@@ -71,10 +70,16 @@ public class Exercise extends AppCompatActivity {
     }
 
     void checkSetting(){
-        if (!settings.music){
+        // Checking the shared Preference of Setting from Exercise;
+        SharedPreferences sharedPref = getSharedPreferences(Settings.APP_PREFS, Context.MODE_PRIVATE);
+        boolean music = sharedPref.getBoolean(Settings.MUSIC, true);
+        boolean vibration = sharedPref.getBoolean(Settings.VIBRATION, true);
+
+        System.out.println("Checking setting from exercise " + "Music: "+ music + " Vibrartion: " + vibration);
+        if (!music){
             mediaPlayer = null;
         }
-        if (!settings.vibration){
+        if (!vibration){
             vi = null;
         }
     }
@@ -108,7 +113,7 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
-            System.out.println("I am at the end of the cycle so I want to repeat myself: " + i);
+            System.out.println("I am at the end of the cycle so I want to repeat myself: " + i + breathing_Pattern.get(i));
             int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
                 totalElapsed += b;
