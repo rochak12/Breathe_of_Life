@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class Exercise extends AppCompatActivity {
     Workout workout = new Workout();
     Preset preset = new Preset();
 
+    Custom custom = new Custom();
+    List<Integer> listFromCustom = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,12 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
+        String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
+        if (custom_message != null){
+            receive_Intent_Message = custom_message;
+            listFromCustom = getIntent().getExtras().getIntegerArrayList(Custom.custom_value);
+        }
+
         System.out.println("This is my Intent:" + receive_Intent_Message);
 
         breathing_Pattern = get_Pattern();
@@ -45,7 +55,6 @@ public class Exercise extends AppCompatActivity {
 
     List<Integer> get_Pattern() {
         System.out.println(receive_Intent_Message);
-        System.out.println(MainActivity.relax_Intent + MainActivity.workout_Intent + "Condition checked");
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
             System.out.println("Relax condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out
@@ -58,11 +67,17 @@ public class Exercise extends AppCompatActivity {
             System.out.println("Preset condition matched3");
             return preset.getList();
         }
-        return Arrays.asList(1, 2, 3);
-        // return null;
+        if (receive_Intent_Message.equals(custom.custom_Intent)) {
+            System.out.println("Custom condition matched4");
+            return listFromCustom;
+        } else {
+            System.out.println("Didn't match anything");
+            return Arrays.asList(1, 2, 3);
+        }
     }
 
     public void start_Exercise(final View view) {
+        start_music();
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         int totalElapsed = 0; // adds
         final int status = 0;
@@ -103,6 +118,10 @@ public class Exercise extends AppCompatActivity {
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
         }
+    }
+
+    void start_music(){
+        // music code
     }
 
 

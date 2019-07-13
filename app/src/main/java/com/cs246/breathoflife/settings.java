@@ -12,8 +12,8 @@ public class settings extends AppCompatActivity {
     public static String MUSIC = "MUSIC";
     public static String VIBRATION = "VIBRATION";
 
-    boolean music;
-    boolean vibration;
+    static boolean music;
+    static boolean vibration;
 
     Switch music_Switch;
     Switch vibration_Switch;
