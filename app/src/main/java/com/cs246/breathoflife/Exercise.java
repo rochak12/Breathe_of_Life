@@ -18,20 +18,25 @@ import java.util.List;
 public class Exercise extends AppCompatActivity {
 
     private List<Integer> breathing_Pattern;
-    Vibrator vi;
+    List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
+    Vibrator vi;
+    Toast breathInToast;
+    Toast breathOutToast;
     Meditation meditation = new Meditation();
     Workout workout = new Workout();
     Preset preset = new Preset();
 
     Custom custom = new Custom();
-    List<Integer> listFromCustom = new ArrayList<>();
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+        breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
+        breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
@@ -48,6 +53,21 @@ public class Exercise extends AppCompatActivity {
 
 
 
+
+    @Override
+    protected void onDestroy()
+    {
+        breathInToast.cancel();
+        breathOutToast.cancel();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop();
+        breathInToast.cancel();
+        breathOutToast.cancel();
+    }
 //
 //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event)
@@ -102,18 +122,15 @@ public class Exercise extends AppCompatActivity {
             if (i != 0)
                 totalElapsed += b;
             else
-//                    vi.vibrate(50); // initial starting vibration
                 startVibrate(view, 1);
             Handler h = new Handler();
             final int finalI = i;
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                        vi.vibrate(50);
                     startVibrate(view, finalI);
-
                 }
-            }, b + totalElapsed); //
+            }, b + totalElapsed);
             System.out.println(i);
         }
     }
@@ -128,9 +145,9 @@ public class Exercise extends AppCompatActivity {
                 public void run() {
                     vi.vibrate(50);
                     if (j % 2 == 0)
-                        Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT).show();
+                        breathOutToast.show();
                     else
-                        Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT).show();
+                       breathInToast.show();
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
         }
@@ -141,9 +158,5 @@ public class Exercise extends AppCompatActivity {
     }
 
 
-    // This needs to be gone
-    public void startTimerInExercise(final View view) {
-        finish();
-    }
 }
 
