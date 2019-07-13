@@ -33,15 +33,18 @@ public class settings extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         music = sharedPref.getBoolean(MUSIC, true);
         vibration = sharedPref.getBoolean(VIBRATION, true);
-        if (!music) no_Music();
-        if (!vibration) no_Vibration();
+        if (!music) {no_Music();}
+        if (!vibration){ no_Vibration();}
+        System.out.println( "I am herre "  + music + "   " + vibration);
     }
 
     private void no_Vibration() {
+        System.out.println("Now vibration is off");
         vibration_Switch.setChecked(false);
     }
 
     private void no_Music() {
+        System.out.println("Now music is off");
         music_Switch.setChecked(false);
     }
 
@@ -57,8 +60,7 @@ public class settings extends AppCompatActivity {
     }
 
     private void edit_Setting() {
-        System.out.println(music);
-        System.out.println(vibration);
+        System.out.println(music + "   " + vibration);
         SharedPreferences sharedPrefs = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
 

@@ -40,7 +40,8 @@ public class Exercise extends AppCompatActivity {
         breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.calm);
-
+        //after initializing the object for toast and vibrator we check for the setting;
+        checkSetting();
 
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
@@ -49,8 +50,8 @@ public class Exercise extends AppCompatActivity {
             receive_Intent_Message = custom_message;
             listFromCustom = getIntent().getExtras().getIntegerArrayList(Custom.custom_value);
         }
-
         System.out.println("This is my Intent:" + receive_Intent_Message);
+
 
         breathing_Pattern = get_Pattern();
         System.out.println("this is my pattern" + breathing_Pattern);
@@ -62,12 +63,21 @@ public class Exercise extends AppCompatActivity {
        breathOutToast = null;
        breathInToast = null;
        vi = null;
-       mediaPlayer.stop();
-       mediaPlayer.release();
+       if (mediaPlayer != null) {
+           mediaPlayer.stop();
+           mediaPlayer.release();
+       }
        super.onBackPressed();
     }
 
-
+    void checkSetting(){
+        if (!settings.music){
+            mediaPlayer = null;
+        }
+        if (!settings.vibration){
+            vi = null;
+        }
+    }
 
 
     List<Integer> get_Pattern() {
@@ -98,6 +108,7 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
+            System.out.println("I am at the end of the cycle so I want to repeat myself: " + i);
             int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
                 totalElapsed += b;
@@ -137,6 +148,7 @@ public class Exercise extends AppCompatActivity {
     }
 
     void start_music(){
+        if (mediaPlayer != null)
        mediaPlayer.start();
     }
 
