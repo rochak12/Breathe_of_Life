@@ -14,7 +14,6 @@ import java.util.List;
 
 import static com.cs246.breathoflife.MainActivity.message_Intent;
 import static com.cs246.breathoflife.MainActivity.relax_Intent;
-
 public class Custom extends AppCompatActivity {
     static String custom_Intent = "I_WANT_TO_GO_TO_CUSTOM";
     static String custom_value = "VALUES FROM CUSTOM";
