@@ -5,6 +5,7 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,13 +17,6 @@ import java.util.List;
 
 public class Exercise extends AppCompatActivity {
 
-    private Button HomeBtn;
-    Button startTimerInExercise;
-    TextView textView2;
-    //    private ArrayList<Double> breathing_Pattern = new ArrayList<Double>(
-//            Arrays.<Float>asList(3.0, 3.0)
-//    );
-//    private List<>
     private List<Integer> breathing_Pattern;
     Vibrator vi;
     String receive_Intent_Message;
@@ -41,7 +35,7 @@ public class Exercise extends AppCompatActivity {
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
-        if (custom_message != null){
+        if (custom_message != null) {
             receive_Intent_Message = custom_message;
             listFromCustom = getIntent().getExtras().getIntegerArrayList(Custom.custom_value);
         }
@@ -51,6 +45,29 @@ public class Exercise extends AppCompatActivity {
         breathing_Pattern = get_Pattern();
         System.out.println("this is my pattern" + breathing_Pattern);
     }
+
+
+
+//
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event)
+//    {
+//        if ((keyCode == KeyEvent.KEYCODE_BACK))
+//        {
+//            finish();
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
+
+
+//
+//    public boolean onKeyDown(int keycode, KeyEvent event) {
+//        if (keycode == KeyEvent.KEYCODE_BACK) {
+//            moveTaskToBack(true);
+//        }
+//        return super.onKeyDown(keycode, event);
+//    }
+
 
     List<Integer> get_Pattern() {
         System.out.println(receive_Intent_Message);
