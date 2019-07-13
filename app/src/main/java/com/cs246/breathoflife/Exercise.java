@@ -37,6 +37,7 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
         breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
+        vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
@@ -51,42 +52,16 @@ public class Exercise extends AppCompatActivity {
         System.out.println("this is my pattern" + breathing_Pattern);
     }
 
-
-
-
     @Override
-    protected void onDestroy()
-    {
-        breathInToast.cancel();
-        breathOutToast.cancel();
-        super.onDestroy();
+    public void onBackPressed() {
+        System.out.println("back button pressed");
+       breathOutToast = null;
+       breathInToast = null;
+       vi = null;
+       super.onBackPressed();
     }
 
-    @Override
-    protected void onStop () {
-        super.onStop();
-        breathInToast.cancel();
-        breathOutToast.cancel();
-    }
-//
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event)
-//    {
-//        if ((keyCode == KeyEvent.KEYCODE_BACK))
-//        {
-//            finish();
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
 
-
-//
-//    public boolean onKeyDown(int keycode, KeyEvent event) {
-//        if (keycode == KeyEvent.KEYCODE_BACK) {
-//            moveTaskToBack(true);
-//        }
-//        return super.onKeyDown(keycode, event);
-//    }
 
 
     List<Integer> get_Pattern() {
@@ -113,8 +88,10 @@ public class Exercise extends AppCompatActivity {
     }
 
     public void start_Exercise(final View view) {
-        start_music();
-        vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+//        if (settings.music) {
+//            start_music();
+//        }
+
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
@@ -137,17 +114,20 @@ public class Exercise extends AppCompatActivity {
 
 
     public void startVibrate(View view, final int j) {
-        vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Handler v = new Handler();
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    vi.vibrate(50);
-                    if (j % 2 == 0)
-                        breathOutToast.show();
-                    else
-                       breathInToast.show();
+                    if (vi != null) {
+                        vi.vibrate(50);
+                    }
+                    if (breathInToast != null && breathOutToast != null) {
+                        if (j % 2 == 0)
+                            breathOutToast.show();
+                        else
+                            breathInToast.show();
+                    }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
         }
