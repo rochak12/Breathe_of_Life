@@ -1,5 +1,6 @@
 package com.cs246.breathoflife;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -20,16 +21,16 @@ public class Exercise extends AppCompatActivity {
     private List<Integer> breathing_Pattern;
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
-    Vibrator vi;
-    Toast breathInToast;
-    Toast breathOutToast;
+
     Meditation meditation = new Meditation();
     Workout workout = new Workout();
     Preset preset = new Preset();
-
     Custom custom = new Custom();
 
-
+    Vibrator vi;
+    Toast breathInToast;
+    Toast breathOutToast;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,9 @@ public class Exercise extends AppCompatActivity {
         breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
         breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.calm);
+
+
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
@@ -58,6 +62,8 @@ public class Exercise extends AppCompatActivity {
        breathOutToast = null;
        breathInToast = null;
        vi = null;
+       mediaPlayer.stop();
+       mediaPlayer.release();
        super.onBackPressed();
     }
 
@@ -88,10 +94,7 @@ public class Exercise extends AppCompatActivity {
     }
 
     public void start_Exercise(final View view) {
-//        if (settings.music) {
-//            start_music();
-//        }
-
+        start_music();
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
@@ -134,7 +137,7 @@ public class Exercise extends AppCompatActivity {
     }
 
     void start_music(){
-        // music code
+       mediaPlayer.start();
     }
 
 
