@@ -190,7 +190,7 @@ public class Custom extends AppCompatActivity {
 
 
     //Launching custom
-    public void launch_Custom(View view){
+    public void launch_Exercise(View view){
         System.out.println("Ready to go to Custom Mode From Custom");
         createExercise(duration, start, middle, end);
 
@@ -204,6 +204,6 @@ public class Custom extends AppCompatActivity {
     }
 
 
-
+//
 }
 
