@@ -7,7 +7,7 @@
     tools:context=".Exercise">
 
     <Button
-        android:id="@+id/BtnMain"
+        android:id="@+id/btnmain"
         android:layout_width="387dp"
         android:layout_height="402dp"
         android:layout_alignParentStart="true"

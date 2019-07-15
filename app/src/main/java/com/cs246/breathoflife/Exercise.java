@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Button;
 //import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Exercise extends AppCompatActivity {
     Workout workout = new Workout();
     Preset preset = new Preset();
     Custom custom = new Custom();
+    Button mainButton;
 
     Vibrator vi;
 //    Toast breathInToast;
@@ -52,6 +54,8 @@ public class Exercise extends AppCompatActivity {
         //after initializing the object for toast and vibrator we check for the setting but
         // before that we have to load setting activity if it hasn't been opened yet
         checkSetting();
+        mainButton = (Button) findViewById(R.id.btnmain);
+
 
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
@@ -121,6 +125,8 @@ public class Exercise extends AppCompatActivity {
 
     public void start_Exercise(final View view) {
         start_music();
+        mainButton.setVisibility(View.GONE);
+
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
@@ -182,34 +188,6 @@ public class Exercise extends AppCompatActivity {
         if (mediaPlayer != null)
             mediaPlayer.start();
     }
-
-//    public void scale(View view) {
-//        float dist = 0.5; // distance it has to scale
-//        float rate;
-//        float xScale = 1;
-//        float yScale = 1;
-//
-//        for (int i = 0; i < breathing_Pattern.size(); i++){
-//
-//            rate = dist / i; // how many points the scale needs to increase per sec
-//            if ((i % 2) == 1){  // if odd number, "breath in"
-//                for (int t = 0; t <= i; t++){
-//                      xScale += rate;
-//                      yScale += rate;
-//                }
-//            }
-//            else{
-//                for (int t = 0; t <= i; t++){
-//                    xScale -= rate;
-//                    yScale -= rate;
-//                }
-//            }
-//        }
-//
-//    }
-
-
-
 
 
 }
