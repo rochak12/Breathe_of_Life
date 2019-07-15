@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
+import javax.xml.datatype.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +16,9 @@ import static com.cs246.breathoflife.MainActivity.message_Intent;
 import static com.cs246.breathoflife.MainActivity.relax_Intent;
 public class Custom extends AppCompatActivity {
     static String custom_Intent = "I_WANT_TO_GO_TO_CUSTOM";
+    static String custom_value = "VALUES FROM CUSTOM";
 
-    List<Integer> list;
+    ArrayList<Integer> list = new ArrayList<>();
     List<Integer> mts = Arrays.asList(4000, 4000, 4375, 4375, 4750, 4750, 5125, 5125, 5500, 5500, 5875, 5875);
     List<Integer> fts = Arrays.asList(1000, 1000, 1500, 1500, 2100, 2100, 2700, 2700, 3300, 3300, 3900, 3900, 4500, 4500, 5100, 5100, 5700, 5700);
     List<Integer> ftm = Arrays.asList(1000, 1000, 1275, 1275, 1550, 1550, 1825, 1825, 2100, 2100, 2375, 2375, 2650, 2650, 2925, 2925, 3200, 3200, 3475, 3475, 3750, 3750, 4000, 4000);
@@ -47,12 +50,16 @@ public class Custom extends AppCompatActivity {
         for (int i = 0; i < dur; i++) {
             switch (type) {
                 case 1:
+                    System.out.println(fast1min + "    " +  list);
                     list.addAll(fast1min);
                     break;
                 case 2:
+                    System.out.println(med1min + "    " +  list);
                     list.addAll(med1min);
+
                     break;
                 case 3:
+                    System.out.println(slow1min + "    " +  list);
                     list.addAll(slow1min);
                     break;
                 default:
@@ -96,19 +103,14 @@ public class Custom extends AppCompatActivity {
         }
     }
 
-    protected void createExercise(int duration, int start, int middle, int end) {
+    protected void createExercise(int duration, int start, int middle, int end){
+        System.out.println("This is what pushed in array: " + "Duration: " + duration + " Start: " + start + " Middle: " + middle + " End: " + end) ;
+
         defaultAppender(duration, start);
         transitionAppender(start, middle);
         defaultAppender(duration, middle);
         transitionAppender(middle, end);
         defaultAppender(duration, end);
-    }
-
-    //Relax/Meditation
-    public void launch_Meditate(View view) {
-        Intent intent = new Intent(Custom.this, Exercise.class);
-        intent.putExtra(message_Intent, relax_Intent);
-        startActivity(intent);
     }
 
 
@@ -167,15 +169,25 @@ public class Custom extends AppCompatActivity {
                     end = 3;
                     break;
         }
+        System.out.println("It is when button is clicked:  " +"Duration: " + duration + " Start: " + start + " Middle: " + middle + " End: " + end) ;
     }
 
 
     //Launching custom
-    public void launch_custom(View view){
-        System.out.println("Ready to go to Workout Mode");
+    public void launch_Custom(View view){
+        System.out.println("Ready to go to Custom Mode From Custom");
+        createExercise(duration, start, middle, end);
+
+        Bundle extras = new Bundle();
+        extras.putString(MainActivity.message_Intent, custom_Intent);
+        extras.putIntegerArrayList(custom_value, list);
+
         Intent intent = new Intent(Custom.this, Exercise.class);
-        intent.putExtra(MainActivity.message_Intent, custom_Intent);
+        intent.putExtras(extras);
         startActivity(intent);
     }
+
+
+
 }
 

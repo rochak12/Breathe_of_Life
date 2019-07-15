@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 
-public class settings extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
     public static String APP_PREFS = "APPLICATION_PREFERENCES";
     public static String MUSIC = "MUSIC";
     public static String VIBRATION = "VIBRATION";
 
-    boolean music;
-    boolean vibration;
+    static boolean music;
+    static boolean vibration;
 
     Switch music_Switch;
     Switch vibration_Switch;
@@ -29,19 +29,25 @@ public class settings extends AppCompatActivity {
         check_Setting();
     }
 
+
+
+
     private void check_Setting() {
         SharedPreferences sharedPref = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         music = sharedPref.getBoolean(MUSIC, true);
         vibration = sharedPref.getBoolean(VIBRATION, true);
-        if (!music) no_Music();
-        if (!vibration) no_Vibration();
+        if (!music) {no_Music();}
+        if (!vibration){ no_Vibration();}
+        System.out.println( "I am herre "  + music + "   " + vibration);
     }
 
     private void no_Vibration() {
+        System.out.println("Now vibration is off");
         vibration_Switch.setChecked(false);
     }
 
     private void no_Music() {
+        System.out.println("Now music is off");
         music_Switch.setChecked(false);
     }
 
@@ -57,8 +63,7 @@ public class settings extends AppCompatActivity {
     }
 
     private void edit_Setting() {
-        System.out.println(music);
-        System.out.println(vibration);
+        System.out.println(music + "   " + vibration);
         SharedPreferences sharedPrefs = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
 

@@ -2,24 +2,18 @@ package com.cs246.breathoflife;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.CountDownTimer;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     static public String message_Intent = "intent_Message";
@@ -96,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Goes to Custom Activity
     public void launch_Custom(View view){
-        System.out.println("Ready to go to Custom Mode");
+        System.out.println("Ready to go to Custom Mode from Main");
         Intent intent = new Intent(MainActivity.this, Custom.class);
         intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
@@ -105,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     //Goes to Setting Activity
     public void launch_Setting(View view){
         System.out.println("Ready to go to Setting");
-        Intent intent = new Intent(MainActivity.this, settings.class);
+        Intent intent = new Intent(MainActivity.this, Settings.class);
         intent.putExtra(message_Intent, workout_Intent);
         startActivity(intent);
     }

@@ -7,7 +7,6 @@
     tools:context=".Custom">
 
 
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/customizer" />
+        app:srcCompat="@drawable/customizersample" />
 
 
     // min time
@@ -46,8 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:checked="false"
+            android:text="3 Min           "
             android:onClick="onRadioButtonClicked"
-            android:text="3 Min         "
             tools:layout_editor_absoluteX="104dp"
             tools:layout_editor_absoluteY="364dp" />
 
@@ -56,18 +55,18 @@
             android:id="@+id/six_min"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
-            android:text="6 Min             "
+            android:text="6 Min              "
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
             android:id="@+id/nine_min"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="9 Min"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -94,27 +93,27 @@
             android:id="@+id/s_slow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Slow"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
             android:id="@+id/s_med"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Medium"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
             android:id="@+id/s_fast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Fast"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -189,27 +188,27 @@
             android:id="@+id/e_slow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Slow"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
             android:id="@+id/e_med"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Medium"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
         <RadioButton
             android:id="@+id/e_fast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onRadioButtonClicked"
             android:text="Fast"
             tools:layout_editor_absoluteX="104dp"
+            android:onClick="onRadioButtonClicked"
             tools:layout_editor_absoluteY="364dp" />
 
     </RadioGroup>
@@ -245,7 +244,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/presstostart_button"
-        android:onClick="launch_Meditate"
+        android:onClick="launch_Custom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
