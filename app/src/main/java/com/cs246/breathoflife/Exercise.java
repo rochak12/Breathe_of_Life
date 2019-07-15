@@ -8,6 +8,7 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,10 +21,12 @@ public class Exercise extends AppCompatActivity {
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
 
+
     Meditation meditation = new Meditation();
     Workout workout = new Workout();
     Preset preset = new Preset();
     Custom custom = new Custom();
+    Button mainButton;
 
     Vibrator vi;
     Toast breathInToast;
@@ -41,6 +44,8 @@ public class Exercise extends AppCompatActivity {
         //after initializing the object for toast and vibrator we check for the setting but
         // before that we have to load setting activity if it hasn't been opened yet
         checkSetting();
+        mainButton = (Button) findViewById(R.id.btnmain);
+
 
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
@@ -108,8 +113,11 @@ public class Exercise extends AppCompatActivity {
         }
     }
 
+
     public void start_Exercise(final View view) {
         start_music();
+        mainButton.setVisibility(View.GONE);
+
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
@@ -134,6 +142,9 @@ public class Exercise extends AppCompatActivity {
 
     public void startVibrate(View view, final int j) {
         Handler v = new Handler();
+        final double xScale = 1.0;
+        final double yScale = 1.0;
+
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
                 @Override
@@ -142,10 +153,12 @@ public class Exercise extends AppCompatActivity {
                         vi.vibrate(50);
                     }
                     if (breathInToast != null && breathOutToast != null) {
-                        if (j % 2 == 0)
+                        if (j % 2 == 0) {
                             breathOutToast.show();
-                        else
+                        }
+                        else {
                             breathInToast.show();
+                        }
                     }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i

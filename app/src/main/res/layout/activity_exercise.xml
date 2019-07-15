@@ -7,7 +7,7 @@
     tools:context=".Exercise">
 
     <Button
-        android:id="@+id/BtnMain"
+        android:id="@+id/btnmain"
         android:layout_width="387dp"
         android:layout_height="402dp"
         android:layout_alignParentStart="true"
@@ -54,8 +54,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="1"
+        android:scaleY="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
