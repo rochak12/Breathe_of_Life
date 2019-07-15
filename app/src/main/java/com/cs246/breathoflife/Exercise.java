@@ -104,6 +104,30 @@ public class Exercise extends AppCompatActivity {
         }
     }
 
+//    public void scale(View view) {
+//        float dist = 0.5; // distance it has to scale
+//        float rate;
+//        float xScale = 1;
+//        float yScale = 1;
+//
+//        for (int i = 0; i < breathing_Pattern.size(); i++){
+//
+//            rate = dist / i; // how many points the scale needs to increase per sec
+//            if ((i % 2) == 1){  // if odd number, "breath in"
+//                for (int t = 0; t <= i; t++){
+//                      xScale += rate;
+//                      yScale += rate;
+//                }
+//            }
+//            else{
+//                for (int t = 0; t <= i; t++){
+//                    xScale -= rate;
+//                    yScale -= rate;
+//                }
+//            }
+//        }
+//
+//    }
 
     // This needs to be gone
     public void startTimerInExercise(final View view) {
