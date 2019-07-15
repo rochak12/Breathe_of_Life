@@ -47,6 +47,9 @@ public class Custom extends AppCompatActivity {
     protected void defaultAppender(int dur, int type) {
         // dur has values 0, 1, or 2.  Depending on the value, it will add
         // that many minutes to the list
+        if (dur == 0){
+            return;
+        }
         for (int i = 0; i < dur; i++) {
             switch (type) {
                 case 1:
@@ -74,30 +77,39 @@ public class Custom extends AppCompatActivity {
                 switch (second) {
                     case 1:
                         list.addAll(fast1min);
+                        break;
                     case 2:
                         list.addAll(ftm);
+                        break;
                     case 3:
                         list.addAll(fts);
+                        break;
                 }
                 break;
             case 2:
                 switch (second) {
                     case 1:
                         list.addAll(mtf);
+                        break;
                     case 2:
                         list.addAll(med1min);
+                        break;
                     case 3:
                         list.addAll(mts);
+                        break;
                 }
                 break;
             case 3:
                 switch (second) {
                     case 1:
                         list.addAll(stf);
+                        break;
                     case 2:
                         list.addAll(stm);
+                        break;
                     case 3:
                         list.addAll(slow1min);
+                        break;
                 }
                 break;
         }
@@ -105,12 +117,16 @@ public class Custom extends AppCompatActivity {
 
     protected void createExercise(int duration, int start, int middle, int end){
         System.out.println("This is what pushed in array: " + "Duration: " + duration + " Start: " + start + " Middle: " + middle + " End: " + end) ;
-
+        ArrayList<Integer> empty = new ArrayList<>(); // empty the list if the user wants to keep making changes
+        list = empty;
         defaultAppender(duration, start);
         transitionAppender(start, middle);
         defaultAppender(duration, middle);
         transitionAppender(middle, end);
         defaultAppender(duration, end);
+        transitionAppender(end, end);
+        list.remove(0); // makes it so the pattern ends of a breathe out
+        System.out.println("This is what the algorithm generated: " + list);
     }
 
 
@@ -134,7 +150,7 @@ public class Custom extends AppCompatActivity {
                     break;
             case R.id.s_slow:
                 if (checked)
-                    start = 1;
+                    start = 3;
                     break;
             case R.id.s_med:
                 if (checked)
@@ -142,11 +158,11 @@ public class Custom extends AppCompatActivity {
                     break;
             case R.id.s_fast:
                 if (checked)
-                    start = 3;
+                    start = 1;
                     break;
             case R.id.m_slow:
                 if (checked)
-                    middle = 1;
+                    middle = 3;
                     break;
             case R.id.m_med:
                 if (checked)
@@ -154,11 +170,11 @@ public class Custom extends AppCompatActivity {
                     break;
             case R.id.m_fast:
                 if (checked)
-                    middle = 3;
+                    middle = 1;
                     break;
             case R.id.e_slow:
                 if (checked)
-                    end = 1;
+                    end = 3;
                     break;
             case R.id.e_med:
                 if (checked)
@@ -166,7 +182,7 @@ public class Custom extends AppCompatActivity {
                     break;
             case R.id.e_fast:
                 if (checked)
-                    end = 3;
+                    end = 1;
                     break;
         }
         System.out.println("It is when button is clicked:  " +"Duration: " + duration + " Start: " + start + " Middle: " + middle + " End: " + end) ;
