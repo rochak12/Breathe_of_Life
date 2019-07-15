@@ -1,13 +1,18 @@
 package com.cs246.breathoflife;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 //import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,7 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Exercise extends AppCompatActivity {
-
+    ImageView lungs;
+    ObjectAnimator objectanimator1, objectanimator2, objectanimator3, objectanimator4;
     private List<Integer> breathing_Pattern;
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
@@ -33,6 +39,11 @@ public class Exercise extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        lungs = (ImageView)findViewById(R.id.imageView5);
+        objectanimator1 = ObjectAnimator.ofFloat(lungs,"scaleX",1.5f);
+        objectanimator2 = ObjectAnimator.ofFloat(lungs,"scaleY",1.5f);
+        objectanimator3 = ObjectAnimator.ofFloat(lungs,"scaleX",0.66f);
+        objectanimator4 = ObjectAnimator.ofFloat(lungs,"scaleY",0.66f);
         setContentView(R.layout.activity_exercise);
 //        breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
 //        breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
@@ -113,19 +124,19 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
-            if (i == breathing_Pattern.size()-1) i = 0;
-            System.out.println("Repeat the pattern");
-            int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
+//            if (i == breathing_Pattern.size()-1) i = 0;
+//                System.out.println("Repeat the pattern");
+            final int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
                 totalElapsed += b;
             else
-                startVibrate(view, 1);
+                startVibrate(view, 1, b);
             Handler h = new Handler();
             final int finalI = i;
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startVibrate(view, finalI);
+                    startVibrate(view, finalI, b);
                 }
             }, b + totalElapsed);
             System.out.println(i);
@@ -133,7 +144,7 @@ public class Exercise extends AppCompatActivity {
     }
 
 
-    public void startVibrate(View view, final int j) {
+    public void startVibrate(View view, final int j, final int length) {
         Handler v = new Handler();
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
@@ -143,17 +154,27 @@ public class Exercise extends AppCompatActivity {
                         vi.vibrate(50);
                     }
 //                    if (breathInToast != null && breathOutToast != null) {
-                        if (j % 2 == 0){
-                            System.out.println("out");
-                        }
-//                            breathOutToast.show();
-                        else{
-                            System.out.println("in");
-                        }
+
 //                            breathInToast.show();
 //                    }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
+        }
+        if (j % 2 == 0){
+            System.out.println("out " + length);
+            objectanimator3.setDuration(length);
+            objectanimator4.setDuration(length);
+            objectanimator3.start();
+            objectanimator4.start();
+
+        }
+//
+        else{
+            System.out.println("in " + length);
+            objectanimator1.setDuration(length);
+            objectanimator2.setDuration(length);
+            objectanimator1.start();
+            objectanimator2.start();
         }
     }
 
@@ -186,6 +207,9 @@ public class Exercise extends AppCompatActivity {
 //        }
 //
 //    }
+
+
+
 
 
 }
