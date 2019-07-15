@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,6 @@ public class Exercise extends AppCompatActivity {
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
 
-
     Meditation meditation = new Meditation();
     Workout workout = new Workout();
     Preset preset = new Preset();
@@ -29,16 +28,16 @@ public class Exercise extends AppCompatActivity {
     Button mainButton;
 
     Vibrator vi;
-    Toast breathInToast;
-    Toast breathOutToast;
+//    Toast breathInToast;
+//    Toast breathOutToast;
     MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-        breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
-        breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
+//        breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
+//        breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
         vi = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.calm);
         //after initializing the object for toast and vibrator we check for the setting but
@@ -64,8 +63,8 @@ public class Exercise extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         System.out.println("back button pressed");
-       breathOutToast = null;
-       breathInToast = null;
+//       breathOutToast = null;
+//       breathInToast = null;
        vi = null;
        if (mediaPlayer != null) {
            mediaPlayer.stop();
@@ -109,10 +108,9 @@ public class Exercise extends AppCompatActivity {
             return listFromCustom;
         } else {
             System.out.println("Didn't match anything");
-            return Arrays.asList(1, 2, 3);
+            return Arrays.asList(1000, 2000, 3000);
         }
     }
-
 
     public void start_Exercise(final View view) {
         start_music();
@@ -121,7 +119,8 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
-            System.out.println("I am at the end of the cycle so I want to repeat myself: " + i + breathing_Pattern.get(i));
+            if (i == breathing_Pattern.size()-1) i = 0;
+            System.out.println("Repeat the pattern");
             int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
                 totalElapsed += b;
@@ -142,9 +141,6 @@ public class Exercise extends AppCompatActivity {
 
     public void startVibrate(View view, final int j) {
         Handler v = new Handler();
-        final double xScale = 1.0;
-        final double yScale = 1.0;
-
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
                 @Override
@@ -152,14 +148,16 @@ public class Exercise extends AppCompatActivity {
                     if (vi != null) {
                         vi.vibrate(50);
                     }
-                    if (breathInToast != null && breathOutToast != null) {
-                        if (j % 2 == 0) {
-                            breathOutToast.show();
+//                    if (breathInToast != null && breathOutToast != null) {
+                        if (j % 2 == 0){
+                            System.out.println("out");
                         }
-                        else {
-                            breathInToast.show();
+//                            breathOutToast.show();
+                        else{
+                            System.out.println("in");
                         }
-                    }
+//                            breathInToast.show();
+//                    }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
         }
@@ -170,30 +168,7 @@ public class Exercise extends AppCompatActivity {
             mediaPlayer.start();
     }
 
-//    public void scale(View view) {
-//        float dist = 0.5; // distance it has to scale
-//        float rate;
-//        float xScale = 1;
-//        float yScale = 1;
-//
-//        for (int i = 0; i < breathing_Pattern.size(); i++){
-//
-//            rate = dist / i; // how many points the scale needs to increase per sec
-//            if ((i % 2) == 1){  // if odd number, "breath in"
-//                for (int t = 0; t <= i; t++){
-//                      xScale += rate;
-//                      yScale += rate;
-//                }
-//            }
-//            else{
-//                for (int t = 0; t <= i; t++){
-//                    xScale -= rate;
-//                    yScale -= rate;
-//                }
-//            }
-//        }
-//
-//    }
+
 
 
 }
