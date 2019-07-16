@@ -26,11 +26,6 @@ import java.util.List;
 
 public class Exercise extends AppCompatActivity {
     ImageView lungs;
-//    Animation expandx;
-    ObjectAnimator objectanimator1 = null;
-    ObjectAnimator objectanimator2 = null;
-    ObjectAnimator objectanimator3 = null;
-    ObjectAnimator objectanimator4 = null;
     private List<Integer> breathing_Pattern;
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
