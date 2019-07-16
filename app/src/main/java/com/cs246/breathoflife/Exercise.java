@@ -14,6 +14,8 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Button;
 //import android.widget.Toast;
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class Exercise extends AppCompatActivity {
     ImageView lungs;
+//    Animation expandx;
     ObjectAnimator objectanimator1 = null;
     ObjectAnimator objectanimator2 = null;
     ObjectAnimator objectanimator3 = null;
@@ -42,15 +45,11 @@ public class Exercise extends AppCompatActivity {
 //    Toast breathInToast;
 //    Toast breathOutToast;
     MediaPlayer mediaPlayer;
+    private Object AnimationUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lungs = (ImageView)findViewById(R.id.imageView5);
-        objectanimator1 = ObjectAnimator.ofFloat(lungs,"scaleX",1.5f);
-        objectanimator2 = ObjectAnimator.ofFloat(lungs,"scaleY",1.5f);
-        objectanimator3 = ObjectAnimator.ofFloat(lungs,"scaleX",0.66f);
-        objectanimator4 = ObjectAnimator.ofFloat(lungs,"scaleY",0.66f);
         setContentView(R.layout.activity_exercise);
 //        breathInToast =  Toast.makeText(Exercise.this, "Breathe in", Toast.LENGTH_SHORT);
 //        breathOutToast = Toast.makeText(Exercise.this, "Breathe out", Toast.LENGTH_SHORT);
@@ -156,6 +155,7 @@ public class Exercise extends AppCompatActivity {
 
 
     public void startVibrate(View view, final int j, final int length) {
+        lungs = (ImageView)findViewById(R.id.imageView5);
         Handler v = new Handler();
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
@@ -173,11 +173,8 @@ public class Exercise extends AppCompatActivity {
         }
         if (j % 2 == 0){
             System.out.println("out " + length);
-            objectanimator3.setDuration(length);
-            objectanimator4.setDuration(length);
-            objectanimator3.start();
-            objectanimator4.start();
-
+            lungs.animate().scaleX(0.66f).setDuration(length);
+            lungs.animate().scaleY(0.66f).setDuration(length);
         }
 //
         else{
@@ -185,10 +182,8 @@ public class Exercise extends AppCompatActivity {
 //                System.out.println("you done messed up");
 //            }
             System.out.println("in " + length);
-            objectanimator1.setDuration(length);
-            objectanimator2.setDuration(length);
-            objectanimator1.start();
-            objectanimator2.start();
+            lungs.animate().scaleX(1.0f).setDuration(length);
+            lungs.animate().scaleY(1.0f).setDuration(length);
         }
     }
 
