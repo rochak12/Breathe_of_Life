@@ -7,7 +7,7 @@
     tools:context=".Exercise">
 
     <Button
-        android:id="@+id/BtnMain"
+        android:id="@+id/btnmain"
         android:layout_width="387dp"
         android:layout_height="402dp"
         android:layout_alignParentStart="true"
@@ -45,23 +45,23 @@
         app:srcCompat="@drawable/dude" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="204dp"
-        android:layout_height="223dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32"
-        app:srcCompat="@drawable/lung" />
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="223dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32"
+            app:srcCompat="@drawable/lung"/>
 
 
 </android.support.constraint.ConstraintLayout>

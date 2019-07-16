@@ -1,13 +1,23 @@
 package com.cs246.breathoflife;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.Button;
 //import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Exercise extends AppCompatActivity {
-
+    ImageView lungs;
     private List<Integer> breathing_Pattern;
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
@@ -24,11 +34,14 @@ public class Exercise extends AppCompatActivity {
     Workout workout = new Workout();
     Preset preset = new Preset();
     Custom custom = new Custom();
+    Button mainButton;
 
     Vibrator vi;
 //    Toast breathInToast;
 //    Toast breathOutToast;
     MediaPlayer mediaPlayer;
+    private Object AnimationUtils;
+    private int privateVi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +54,8 @@ public class Exercise extends AppCompatActivity {
         //after initializing the object for toast and vibrator we check for the setting but
         // before that we have to load setting activity if it hasn't been opened yet
         checkSetting();
+        mainButton = (Button) findViewById(R.id.btnmain);
+
 
 
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
@@ -110,32 +125,33 @@ public class Exercise extends AppCompatActivity {
 
     public void start_Exercise(final View view) {
         start_music();
+        mainButton.setVisibility(View.GONE);
+
         int totalElapsed = 0; // adds
         final int status = 0;
-        for (int i = 0; i < breathing_Pattern.size(); i++) {
-            if (!receive_Intent_Message.equals(custom.custom_Intent)) {
-                if (i == breathing_Pattern.size() - 1) i = 0;
-            }
-            System.out.println("Repeat the pattern");
-            int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
-            if (i != 0)
+        for (privateVi = 0; privateVi < breathing_Pattern.size(); privateVi++) {
+            System.out.println("checked " + privateVi);
+
+            final int b = breathing_Pattern.get(privateVi); // use *1000 if list is in seconds
+            if (privateVi != 0)
                 totalElapsed += b;
             else
-                startVibrate(view, 1);
+                startVibrate(view, 1, b);
             Handler h = new Handler();
-            final int finalI = i;
+            final int finalI = privateVi;
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startVibrate(view, finalI);
+                    startVibrate(view, finalI, b);
                 }
             }, b + totalElapsed);
-            System.out.println(i);
+            System.out.println(privateVi);
         }
     }
 
 
-    public void startVibrate(View view, final int j) {
+    public void startVibrate(View view, final int j, final int length) {
+        lungs = (ImageView)findViewById(R.id.imageView5);
         Handler v = new Handler();
         for (int i = 0; i < 2; i++) {
             v.postDelayed(new Runnable() {
@@ -145,17 +161,38 @@ public class Exercise extends AppCompatActivity {
                         vi.vibrate(50);
                     }
 //                    if (breathInToast != null && breathOutToast != null) {
-                        if (j % 2 == 0){
-                            System.out.println("out");
-                        }
-//                            breathOutToast.show();
-                        else{
-                            System.out.println("in");
-                        }
+
 //                            breathInToast.show();
 //                    }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
+        }
+
+
+        /* This code was intended to repeat the pattern but, we eliminated the idea later*/
+//        if (!receive_Intent_Message.equals(custom.custom_Intent)) {
+//          if (j == (breathing_Pattern.size() - 2)) {
+//                    privateVi = 0;
+//                    System.out.println("Repeat the pattern");
+//                    System.out.println(j);
+//                }
+//            }
+
+
+
+        if (j % 2 == 0){
+            System.out.println("out " + length);
+            lungs.animate().scaleX(0.66f).setDuration(length);
+            lungs.animate().scaleY(0.66f).setDuration(length);
+        }
+//
+        else{
+//            if(objectanimator1 == null){
+//                System.out.println("you done messed up");
+//            }
+            System.out.println("in " + length);
+            lungs.animate().scaleX(1.0f).setDuration(length);
+            lungs.animate().scaleY(1.0f).setDuration(length);
         }
     }
 
@@ -163,31 +200,6 @@ public class Exercise extends AppCompatActivity {
         if (mediaPlayer != null)
             mediaPlayer.start();
     }
-
-//    public void scale(View view) {
-//        float dist = 0.5; // distance it has to scale
-//        float rate;
-//        float xScale = 1;
-//        float yScale = 1;
-//
-//        for (int i = 0; i < breathing_Pattern.size(); i++){
-//
-//            rate = dist / i; // how many points the scale needs to increase per sec
-//            if ((i % 2) == 1){  // if odd number, "breath in"
-//                for (int t = 0; t <= i; t++){
-//                      xScale += rate;
-//                      yScale += rate;
-//                }
-//            }
-//            else{
-//                for (int t = 0; t <= i; t++){
-//                    xScale -= rate;
-//                    yScale -= rate;
-//                }
-//            }
-//        }
-//
-//    }
 
 
 }
