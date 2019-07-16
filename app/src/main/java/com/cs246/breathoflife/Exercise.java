@@ -1,5 +1,7 @@
 package com.cs246.breathoflife;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,7 +24,10 @@ import java.util.List;
 
 public class Exercise extends AppCompatActivity {
     ImageView lungs;
-    ObjectAnimator objectanimator1, objectanimator2, objectanimator3, objectanimator4;
+    ObjectAnimator objectanimator1 = null;
+    ObjectAnimator objectanimator2 = null;
+    ObjectAnimator objectanimator3 = null;
+    ObjectAnimator objectanimator4 = null;
     private List<Integer> breathing_Pattern;
     List<Integer> listFromCustom = new ArrayList<>();
     String receive_Intent_Message;
@@ -176,6 +181,9 @@ public class Exercise extends AppCompatActivity {
         }
 //
         else{
+//            if(objectanimator1 == null){
+//                System.out.println("you done messed up");
+//            }
             System.out.println("in " + length);
             objectanimator1.setDuration(length);
             objectanimator2.setDuration(length);
