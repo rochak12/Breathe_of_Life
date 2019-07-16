@@ -113,7 +113,9 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (int i = 0; i < breathing_Pattern.size(); i++) {
-            if (i == breathing_Pattern.size()-1) i = 0;
+            if (!receive_Intent_Message.equals(custom.custom_Intent)) {
+                if (i == breathing_Pattern.size() - 1) i = 0;
+            }
             System.out.println("Repeat the pattern");
             int b = breathing_Pattern.get(i); // use *1000 if list is in seconds
             if (i != 0)
