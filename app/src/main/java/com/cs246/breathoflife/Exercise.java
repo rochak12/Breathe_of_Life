@@ -166,8 +166,8 @@ public class Exercise extends AppCompatActivity {
         // If it is a breathe out, do the shrink animation
         if (j % 2 == 0){
             System.out.println("out " + length);
-            lungs.animate().scaleX(0.66f).setDuration(length);
-            lungs.animate().scaleY(0.66f).setDuration(length);
+            lungs.animate().scaleX(0.8f).setDuration(length);
+            lungs.animate().scaleY(0.8f).setDuration(length);
         }
 //
         // if it is a breathe in, do the expand animation
