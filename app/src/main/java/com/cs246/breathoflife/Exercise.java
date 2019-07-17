@@ -1,24 +1,17 @@
 package com.cs246.breathoflife;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Button;
-//import android.widget.Toast;
+//import android.widget.Toast; // used before we got the animations working
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,19 +49,16 @@ public class Exercise extends AppCompatActivity {
         checkSetting();
         mainButton = (Button) findViewById(R.id.btnmain);
 
-
-
         receive_Intent_Message = getIntent().getStringExtra(MainActivity.message_Intent);
         String custom_message = getIntent().getExtras().getString(MainActivity.message_Intent);
         if (custom_message != null) {
             receive_Intent_Message = custom_message;
             listFromCustom = getIntent().getExtras().getIntegerArrayList(Custom.custom_value);
         }
-        System.out.println("This is my Intent:" + receive_Intent_Message);
-
+        Log.d("This is my Intent:", receive_Intent_Message);
 
         breathing_Pattern = get_Pattern();
-        System.out.println("this is my pattern" + breathing_Pattern);
+        Log.d("this is my pattern", ": " + breathing_Pattern);
     }
 
     @Override
@@ -103,22 +93,22 @@ public class Exercise extends AppCompatActivity {
     List<Integer> get_Pattern() {
         System.out.println(receive_Intent_Message);
         if (receive_Intent_Message.equals(MainActivity.relax_Intent)) {
-            System.out.println("Relax condition matched1");
+            Log.d("Condition: ", "Relax condition matched1");
             return meditation.getList(); // make sure the array is always odd to make sure it ends on a breathe out
         }
         if (receive_Intent_Message.equals(MainActivity.workout_Intent)) {
-            System.out.println("Workout condition matched2");
+            Log.d("Condition: ","Workout condition matched2");
             return workout.getList();
         }
         if (receive_Intent_Message.equals(MainActivity.preset_Intent)) {
-            System.out.println("Preset condition matched3");
+            Log.d("Condition: ","Preset condition matched3");
             return preset.getList();
         }
         if (receive_Intent_Message.equals(custom.custom_Intent)) {
-            System.out.println("Custom condition matched4");
+            Log.d("Condition: ","Custom condition matched4");
             return listFromCustom;
         } else {
-            System.out.println("Didn't match anything");
+            Log.d("Condition: ","Didn't match anything");
             return Arrays.asList(1000, 2000, 3000);
         }
     }
@@ -130,7 +120,7 @@ public class Exercise extends AppCompatActivity {
         int totalElapsed = 0; // adds
         final int status = 0;
         for (privateVi = 0; privateVi < breathing_Pattern.size(); privateVi++) {
-            System.out.println("checked " + privateVi);
+            Log.d("checked" ," " + privateVi);
 
             final int b = breathing_Pattern.get(privateVi); // use *1000 if list is in seconds
             if (privateVi != 0)
@@ -160,14 +150,9 @@ public class Exercise extends AppCompatActivity {
                     if (vi != null) {
                         vi.vibrate(50);
                     }
-//                    if (breathInToast != null && breathOutToast != null) {
-
-//                            breathInToast.show();
-//                    }
                 }
             }, 150 * i); // also try b + totalElapsed, current is b*i
         }
-
 
         /* This code was intended to repeat the pattern but, we eliminated the idea later*/
 //        if (!receive_Intent_Message.equals(custom.custom_Intent)) {
@@ -178,18 +163,15 @@ public class Exercise extends AppCompatActivity {
 //                }
 //            }
 
-
-
+        // If it is a breathe out, do the shrink animation
         if (j % 2 == 0){
             System.out.println("out " + length);
             lungs.animate().scaleX(0.66f).setDuration(length);
             lungs.animate().scaleY(0.66f).setDuration(length);
         }
 //
+        // if it is a breathe in, do the expand animation
         else{
-//            if(objectanimator1 == null){
-//                System.out.println("you done messed up");
-//            }
             System.out.println("in " + length);
             lungs.animate().scaleX(1.0f).setDuration(length);
             lungs.animate().scaleY(1.0f).setDuration(length);
@@ -200,7 +182,5 @@ public class Exercise extends AppCompatActivity {
         if (mediaPlayer != null)
             mediaPlayer.start();
     }
-
-
 }
 
